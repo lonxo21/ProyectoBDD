@@ -5,17 +5,17 @@ mover_administrativos_dblink()
 RETURNS void AS $$
 
 
-DECLARE idmax int;
-        idmax2 int;
+DECLARE idmax int,
+        idmax2 int,
         tupla_adm RECORD ;
 
 SELECT INTO idmax
-max(usuario.id)
-FROM usuario
+MAX(usuario.id)
+FROM usuario;
 
 SELECT INTO idmax2
-max(direccion.id)
-FROM direccion
+MAX(direccion.id)
+FROM direccion;
 
 BEGIN
     FOR tupla_adm IN (SELECT * FROM
