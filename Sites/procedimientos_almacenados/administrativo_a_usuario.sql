@@ -10,17 +10,6 @@ idmax int;
 idmax2 int;
 tupla_adm RECORD ;
 
-BEGIN
-
-    SELECT INTO idmax
-    MAX(usuario.id)
-    FROM usuario;
-
-    SELECT INTO idmax2
-    MAX(direccion.id)
-    FROM direccion;
-
-END
 
 BEGIN
     FOR tupla_adm IN (SELECT * FROM
@@ -31,6 +20,15 @@ BEGIN
     as f(id int, rut varchar, nombre varchar, sexo varchar, edad int, direccion varchar, comuna varchar))
 
     LOOP
+
+        SELECT INTO idmax
+        MAX(usuario.id)
+        FROM usuario;
+
+        SELECT INTO idmax2
+        MAX(direccion.id)
+        FROM direccion;
+        
         IF NOT EXISTS (select usuario.rut from usuario where usuario.rut = tupla_adm.rut)
         BEGIN
             INSERT INTO Usuario VALUES(idmax + 1, tupla_adm.nombre, tupla_adm.rut, tupla_adm.edad, tupla_adm.sexo);
