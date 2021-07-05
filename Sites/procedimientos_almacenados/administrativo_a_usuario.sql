@@ -30,9 +30,9 @@ BEGIN
         
         IF NOT EXISTS (select usuario.rut from usuario where usuario.rut = tupla_adm.rut) THEN
             INSERT INTO Usuario VALUES(idmax + 1, tupla_adm.nombre, tupla_adm.rut, tupla_adm.edad, tupla_adm.sexo);
+
             IF NOT EXISTS (select direccion.nombre from direccion where direccion.nombre = tupla_adm.direccion) THEN
                 INSERT INTO Direccion VALUES(idmax2 + 1, direccion, comuna);
-                SET @counter = @counter + 1
             END IF;
         END IF;
 
