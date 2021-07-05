@@ -32,7 +32,7 @@ BEGIN
             INSERT INTO Usuario VALUES(idmax + 1, tupla_adm.nombre, tupla_adm.rut, tupla_adm.edad, tupla_adm.sexo);
 
             IF NOT EXISTS (select direccion.nombre from direccion where direccion.nombre = tupla_adm.direccion) THEN
-                INSERT INTO Direccion VALUES(idmax2 + 1, direccion, comuna);
+                INSERT INTO Direccion VALUES(idmax2 + 1, tupla_adm.direccion, tupla_adm.comuna);
             END IF;
         END IF;
 
