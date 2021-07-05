@@ -25,13 +25,13 @@ BEGIN
         FROM usuario;
 
         SELECT INTO idmax2
-        MAX(direcciones_e3.id)
+        MAX(direcciones_e3.direcid)
         FROM direcciones_e3;
         
         IF NOT EXISTS (select usuario.rut from usuario where usuario.rut = tupla_adm.rut) THEN
             INSERT INTO Usuario VALUES(idmax + 1, tupla_adm.nombre, tupla_adm.rut, tupla_adm.edad, tupla_adm.sexo);
 
-            IF NOT EXISTS (select direcciones_e3.nombre from direcciones_e3 where direcciones_e3.nombre = tupla_adm.direccion) THEN
+            IF NOT EXISTS (select direcciones_e3.direcnom from direcciones_e3 where direcciones_e3.direcnom = tupla_adm.direccion) THEN
                 INSERT INTO Direcciones_e3 VALUES(idmax2 + 1, tupla_adm.direccion, tupla_adm.comuna);
             END IF;
         END IF;
