@@ -10,7 +10,6 @@ idmax int;
 idmax2 int;
 tupla_adm RECORD ;
 
-
 BEGIN
     FOR tupla_adm IN (SELECT * FROM
     public.dblink('dbname=grupo24e3
