@@ -10,13 +10,17 @@ idmax int;
 idmax2 int;
 tupla_adm RECORD ;
 
-SELECT INTO idmax
-MAX(usuario.id)
-FROM usuario;
+BEGIN
 
-SELECT INTO idmax2
-MAX(direccion.id)
-FROM direccion;
+    SELECT INTO idmax
+    MAX(usuario.id)
+    FROM usuario;
+
+    SELECT INTO idmax2
+    MAX(direccion.id)
+    FROM direccion;
+
+END
 
 BEGIN
     FOR tupla_adm IN (SELECT * FROM
