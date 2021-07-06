@@ -8,6 +8,8 @@ RETURNS void AS $$
 DECLARE 
 idmax int;
 idmax2 int;
+iddirec int;
+idadmin int;
 tupla_adm RECORD ;
 
 BEGIN
@@ -15,8 +17,8 @@ BEGIN
     public.dblink('dbname=grupo24e3
     port=5432
     password=familiaperez24
-    user=grupo24', 'select distinct personal.id, personal.rut, personal.nombre, personal.sexo, personal.edad, direcciones.nombre_direccion, direcciones.comuna from personal, unidades, direcciones where personal.clasificacion = ''administracion'' and unidades.id = personal.unidad and direcciones.id = unidades.direccion')
-    as f(id int, rut varchar, nombre varchar, sexo varchar, edad int, direccion varchar, comuna varchar))
+    user=grupo24', 'select distinct personal.id, personal.rut, personal.nombre, personal.sexo, personal.edad, direcciones.nombre_direccion, direcciones.comuna, direcciones.id from personal, unidades, direcciones where personal.clasificacion = ''administracion'' and unidades.id = personal.unidad and direcciones.id = unidades.direccion')
+    as f(id int, rut varchar, nombre varchar, sexo varchar, edad int, direccion varchar, comuna varchar, id_direccion int))
 
     LOOP
 
@@ -34,6 +36,16 @@ BEGIN
             IF NOT EXISTS (select direcciones_e3.direcnom from direcciones_e3 where direcciones_e3.direcnom = tupla_adm.direccion) THEN
                 INSERT INTO Direcciones_e3 VALUES(idmax2 + 1, tupla_adm.direccion, tupla_adm.comuna);
             END IF;
+
+            SELECT INTO iddirec
+            direcciones_e3.direcid FROM direcciones_e3 WHERE direcciones_e3.direcnom = tupla_adm.direccion;
+
+            SELECT INTO idadmin
+            usuario.id WHERE usuario.rut = tupla_adm.rut;
+
+
+            INSERT INTO Residencia VALUES(idadmin, iddirec);
+
         END IF;
 
 
