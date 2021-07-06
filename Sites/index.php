@@ -21,8 +21,9 @@ Rut:
 Contraseña:
 <input type="text" name= "contraseña">
 <br/><br/>
-<input type="Submit" value="Ingresar">
-<button type="button" onclick="redirect('registro.php')"> Registrarse</button>
+<p><input type="Submit" value="Ingresar">
+<button onclick="redirect('registro.php')"> Registrarse</button>
+</p>
 </form>
 
 
