@@ -15,7 +15,7 @@ BEGIN
     public.dblink('dbname=grupo24e3
     port=5432
     password=familiaperez24
-    user=grupo24', 'select distinct personal.id, personal.rut, personal.nombre, personal.sexo, personal.edad, unidades.direccion, direcciones.comuna from personal, unidades, direcciones where personal.clasificacion = ''administracion'' and unidades.id = personal.unidad and direcciones.id = unidades.direccion')
+    user=grupo24', 'select distinct personal.id, personal.rut, personal.nombre, personal.sexo, personal.edad, direcciones.nombre_direccion, direcciones.comuna from personal, unidades, direcciones where personal.clasificacion = ''administracion'' and unidades.id = personal.unidad and direcciones.id = unidades.direccion')
     as f(id int, rut varchar, nombre varchar, sexo varchar, edad int, direccion varchar, comuna varchar))
 
     LOOP
