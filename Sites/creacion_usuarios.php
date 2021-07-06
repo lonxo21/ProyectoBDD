@@ -4,14 +4,14 @@
 <body>
 <?php
   #Llama a conexión, crea el objeto PDO y obtiene la variable $db
-  require("config/conexion.php");
+  require("conexion.php");
   if (isset($_POST["nombre"], $_POST["rut"], $_POST["edad"], $_POST["sexo"], $_POST["direccion"], $_POST["comuna"], 
   $_POST["contraseña"], $_POST["contraseña_2"]) and $_POST["nombre"] !="" 
   and $_POST["rut"]!="" and $_POST["edad"]!="" and $_POST["sexo"]!="" and $_POST["direccion"]!="" and $_POST["comuna"]!="" 
   and $_POST["contraseña"]!="" and $_POST["contraseña_2"]!=""){
     $repetido = FALSE;
     $query = "select rut from usuario;";
-    $result = $db -> prepare($query);
+    $result = $db2 -> prepare($query);
     $result -> execute();
     $resultado = $result -> fetchAll();
     foreach ($resultado as $rut) {
@@ -29,7 +29,7 @@
         $comuna = $_POST["comuna"];
         $contraseña = $_POST["contraseña"];
         $query = "select id from usuario order by id desc limit 1;";
-        $result = $db -> prepare($query);
+        $result = $db2 -> prepare($query);
         $result -> execute();
         $resultado = $result -> fetch(1);
         echo $resultado[0];
@@ -38,7 +38,7 @@
         echo $id_usuario;
         echo "</br>";
         $query2 = "select id from direcciones_e3 order by id desc limit 1;";
-        $result2 = $db -> prepare($query2);
+        $result2 = $db2 -> prepare($query2);
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
         $id_direccion = (int)$resultado2[0] + 1;
@@ -61,11 +61,11 @@
         $query3 = "INSERT INTO usuario (id, nombre, rut, edad, sexo, contraseña) VALUES ('$id_usuario', '$nombre','$rut','$edad', '$sexo', '$contraseña');";
         $query4 = "INSERT INTO direcciones_e3 (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
         $query5 = "INSERT INTO residencia (id_usuario, id_direccion) VALUES ('$id_usuario','$id_direccion');";
-        $result3 = $db -> prepare($query3);
+        $result3 = $db2 -> prepare($query3);
         if ($result3 -> execute()){
-          $result4 = $db -> prepare($query4);
+          $result4 = $db2 -> prepare($query4);
           if ($result4 -> execute()){
-            $result5 = $db -> prepare($query5);
+            $result5 = $db2 -> prepare($query5);
             if ($result5 -> execute()){
               echo "<p>Registro agregado.</p>";
               $_SESSION['rut']=$rut;
