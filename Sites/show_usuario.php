@@ -8,6 +8,7 @@
 
   #Se obtiene el valor del input del usuario
     $rut = $_SESSION['rut'];
+    echo $rut;
     $query = "select usuario.nombre, usuario.rut, usuario.edad, usuario.sexo, direcciones_e3.nombre, direcciones_e3.comuna, usuario,id 
     from usuario,residencia,direcciones_e3 
     where usuario.rut='$rut' and usuario.id=residencia.id_usuario and residencia.id_direccion=direcciones_e3.id;";
