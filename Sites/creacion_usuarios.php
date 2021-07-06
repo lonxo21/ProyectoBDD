@@ -32,11 +32,13 @@
         $result = $db -> prepare($query);
         $result -> execute();
         $resultado = $result -> fetch(1);
+        echo $resultado[0];
         $id_usuario = (int)$resultado[0] + 1;
         $query2 = "select id from direcciones_e3 order by id desc limit 1;";
         $result2 = $db -> prepare($query2);
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
+        echo $resultado[0];
         $id_direccion = (int)$resultado2[0] + 1;
         echo $id_usuario;
         echo $nombre;
