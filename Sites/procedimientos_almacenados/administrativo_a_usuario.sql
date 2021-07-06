@@ -41,7 +41,7 @@ BEGIN
             direcciones_e3.direcid FROM direcciones_e3 WHERE direcciones_e3.direcnom = tupla_adm.direccion;
 
             SELECT INTO idadmin
-            usuario.id WHERE usuario.rut = tupla_adm.rut;
+            usuario.id FROM usuario WHERE usuario.rut = tupla_adm.rut;
 
 
             INSERT INTO Residencia VALUES(idadmin, iddirec);
