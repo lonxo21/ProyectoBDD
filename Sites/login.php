@@ -9,7 +9,7 @@
   and $_POST["contraseña"]!=""){
     $rut = $_POST["rut"];
     $contraseña = $_POST["contraseña"];
-    $query = "select rut, edad from usuario where rut='$rut';";
+    $query = "select rut, contraseña from usuario where rut='$rut';";
     $result = $db2 -> prepare($query);
     $result -> execute();
     $resultado = $result -> fetch(1);
