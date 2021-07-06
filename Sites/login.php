@@ -15,7 +15,9 @@
     if ($rut==$resultado[0]){
         if ($contraseña==$resultado[1]){
           echo "<p> Ingreso completado </p>";
-          echo "<meta http-equiv='refresh' content='URL=show_usuario.php' />";
+          session_start();
+          $_SESSION['rut']=$rut;
+          echo "<meta http-equiv='refresh' content='3;URL=show_usuario.php' />";
         } else {
           echo "<p>Contraseña incorrecta</p>";
         }

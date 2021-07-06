@@ -27,13 +27,6 @@
         $direccion = $_POST["direccion"];
         $comuna = $_POST["comuna"];
         $contraseña = $_POST["contraseña"];
-        $contraseña_2 = $_POST["contraseña_2"];
-        #buscar el id de la comuna
-        $query = "select id from comuna where nombre='$comuna';";
-        $result = $db -> prepare($query);
-        $result -> execute();
-        $resultado = $result -> fetch(1);
-        $id_comuna = (int)$resultado[0];
         $query = "select id from usuario order by id desc limit 1;";
         $result = $db -> prepare($query);
         $result -> execute();
@@ -45,7 +38,7 @@
         $resultado2 = $result2 -> fetch(1);
         $id_direccion = (int)$resultado2[0] + 1;
         $query3 = "INSERT INTO usuario (id, nombre, rut, edad, sexo, contraseña) VALUES ('$id_usuario', '$nombre','$rut','$edad', '$sexo', '$contraseña');";
-        $query4 = "INSERT INTO direccion (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$id_comuna');";
+        $query4 = "INSERT INTO direccion (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
         $query5 = "INSERT INTO residencia (id_usuario, id_direccion) VALUES ('$id_usuario','$id_direccion');";
         $result3 = $db -> prepare($query3);
         if ($result3 -> execute()){
@@ -54,6 +47,8 @@
             $result5 = $db -> prepare($query5);
             if ($result5 -> execute()){
               echo "<p>Registro agregado.</p>";
+              session_start();
+              $_SESSION['rut']=$rut;
               echo "<meta http-equiv='refresh' content='3; URL=show_usuario.php' />";
             } else {
             echo "<p>No se pudo crear la cuenta</p>";
