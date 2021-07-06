@@ -32,13 +32,13 @@
         $result -> execute();
         $resultado = $result -> fetch(1);
         $id_usuario = (int)$resultado[0] + 1;
-        $query2 = "select id from direccion order by id desc limit 1;";
+        $query2 = "select id from direcciones_e3 order by id desc limit 1;";
         $result2 = $db -> prepare($query2);
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
         $id_direccion = (int)$resultado2[0] + 1;
         $query3 = "INSERT INTO usuario (id, nombre, rut, edad, sexo, contraseña) VALUES ('$id_usuario', '$nombre','$rut','$edad', '$sexo', '$contraseña');";
-        $query4 = "INSERT INTO direccion (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
+        $query4 = "INSERT INTO direcciones_e3 (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
         $query5 = "INSERT INTO residencia (id_usuario, id_direccion) VALUES ('$id_usuario','$id_direccion');";
         $result3 = $db -> prepare($query3);
         if ($result3 -> execute()){
