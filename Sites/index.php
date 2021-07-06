@@ -19,7 +19,7 @@ Rut:
 <input type="text" name= "rut">
 <br/>
 Contraseña:
-<input type="text" name= "contraseña">
+<input type="text" name="rut" required pattern="^(\d{1,3}(?:\d{1,3}){2}-[\dkK])$" placeholder="11111111-1">
 <br/><br/>
 <p><input type="Submit" value="Ingresar"> 
 <button type="button" onclick="location.href = 'registro.php';"> Registrarse</button></p>
