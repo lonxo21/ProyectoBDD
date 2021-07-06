@@ -22,7 +22,7 @@ Contraseña:
 <input type="text" name= "contraseña">
 <br/><br/>
 <input type="Submit" value="Ingresar">
-<button type="A" onclick="redirect('registro.php')"> Registrarse</button>
+<button type="button" onclick="redirect('registro.php')"> Registrarse</button>
 </form>
 
 
