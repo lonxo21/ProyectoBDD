@@ -42,7 +42,7 @@
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
         $id_direccion = (int)$resultado2[0] + 1;
-        echo $resultado[0];
+        echo $resultado2[0];
         echo "</br>";
         echo $id_direccion[0];
         echo "</br>";
