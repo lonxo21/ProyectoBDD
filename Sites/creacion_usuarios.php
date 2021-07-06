@@ -51,13 +51,13 @@
               $_SESSION['rut']=$rut;
               echo "<meta http-equiv='refresh' content='3; URL=show_usuario.php' />";
             } else {
-            echo "<p>No se pudo crear la cuenta</p>";
+            echo "<p>No se pudo crear la cuenta(3)</p>";
             }
           } else {
-            echo "<p>No se pudo crear la cuenta</p>";
+            echo "<p>No se pudo crear la cuent(2)</p>";
           }
         } else {
-          echo "<p>No se pudo crear la cuenta</p>";
+          echo "<p>No se pudo crear la cuenta(1)</p>";
         }
       } else {
         echo "<p>Las contraseñas no coinciden</p>";
