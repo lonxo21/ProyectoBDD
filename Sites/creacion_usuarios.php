@@ -33,6 +33,7 @@
         $result -> execute();
         $resultado = $result -> fetch(1);
         $id_usuario = intval($resultado[0]) + 1;
+        echo $id_usuario;
         $query2 = "select id from direcciones_e3 order by id desc limit 1;";
         $result2 = $db2 -> prepare($query2);
         $result2 -> execute();
