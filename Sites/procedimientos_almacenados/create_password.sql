@@ -7,7 +7,7 @@ RETURNS void AS $$
 
 BEGIN
 
-UPDATE usuario SET password = 'soygenerico123';
+UPDATE usuario SET password = 'gen12345';
 
 
 END
