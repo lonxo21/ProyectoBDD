@@ -38,6 +38,14 @@
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
         $id_direccion = (int)$resultado2[0] + 1;
+        echo $id_usuario;
+        echo $nombre;
+        echo $rut;
+        echo $edad;
+        echo $sexo;
+        echo $direccion;
+        echo $comuna;
+        echo $id_direccion;
         $query3 = "INSERT INTO usuario (id, nombre, rut, edad, sexo, contraseña) VALUES ('$id_usuario', '$nombre','$rut','$edad', '$sexo', '$contraseña');";
         $query4 = "INSERT INTO direcciones_e3 (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
         $query5 = "INSERT INTO residencia (id_usuario, id_direccion) VALUES ('$id_usuario','$id_direccion');";
