@@ -8,10 +8,9 @@
 
   #Se obtiene el valor del input del usuario
     $rut = $_SESSION['rut'];
-    echo $rut;
-    $query = "select usuario.nombre, usuario.rut, usuario.edad, usuario.sexo, direcciones_e3.nombre, direcciones_e3.comuna, usuario,id 
+    $query = "select usuario.nombre, usuario.rut, usuario.edad, usuario.sexo, direcciones_e3.direcnom, direcciones_e3.comnom, usuario,id 
     from usuario,residencia,direcciones_e3 
-    where usuario.rut='$rut' and usuario.id=residencia.id_usuario and residencia.id_direccion=direcciones_e3.id;";
+    where usuario.rut='$rut' and usuario.id=residencia.id_usuario and residencia.id_direccion=direcciones_e3.direcid;";
     $result = $db2 -> prepare($query);
     $result -> execute();
     $resultado = $result -> fetch(1);
@@ -28,10 +27,10 @@
     echo "</br>";
     echo "</br>";
     $id_usuario = $resultado[6];
-    $query = "select compras.id, tienda.nombre, direcciones_e3.nombre, direccion.comuna, productos.nombre, boleta.cantidad 
+    $query = "select compras.id, tienda.nombre, direcciones_e3.direcnom, direcciones_e3.comnom, productos.nombre, boleta.cantidad 
     from compras, tienda, direcciones_e3, productos 
     where compras.id_usuario = '$id_usuario' and compras.id = boleta.id_compra and 
-    boleta.id_producto=productos.id and compras.id_tienda=tienda.id and compras.id_direccion=direcciones_e3.id 
+    boleta.id_producto=productos.id and compras.id_tienda=tienda.id and compras.id_direccion=direcciones_e3.direcid 
     order by compras.id desc;";
     $result = $db2 -> prepare($query);
     $result -> execute();
