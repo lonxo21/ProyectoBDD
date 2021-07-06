@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include('templates/header.html');   ?>
 
 <body>
@@ -15,7 +16,6 @@
     if ($rut==$resultado[0]){
         if ($contraseña==$resultado[1]){
           echo "<p> Ingreso completado </p>";
-          session_start();
           $_SESSION['rut']=$rut;
           echo "<meta http-equiv='refresh' content='20;URL=show_usuario.php' />";
         } else {

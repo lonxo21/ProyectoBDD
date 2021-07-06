@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include('templates/header.html');   ?>
 
 <body>
@@ -47,7 +48,6 @@
             $result5 = $db -> prepare($query5);
             if ($result5 -> execute()){
               echo "<p>Registro agregado.</p>";
-              session_start();
               $_SESSION['rut']=$rut;
               echo "<meta http-equiv='refresh' content='3; URL=show_usuario.php' />";
             } else {
