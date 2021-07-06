@@ -35,14 +35,16 @@
         echo $resultado[0];
         echo "</br>";
         $id_usuario = (int)$resultado[0] + 1;
+        echo $id_usuario;
+        echo "</br>";
         $query2 = "select id from direcciones_e3 order by id desc limit 1;";
         $result2 = $db -> prepare($query2);
         $result2 -> execute();
         $resultado2 = $result2 -> fetch(1);
+        $id_direccion = (int)$resultado2[0] + 1;
         echo $resultado[0];
         echo "</br>";
-        $id_direccion = (int)$resultado2[0] + 1;
-        echo $id_usuario;
+        echo $id_direccion[0];
         echo "</br>";
         echo $nombre;
         echo "</br>";
@@ -55,8 +57,6 @@
         echo $direccion;
         echo "</br>";
         echo $comuna;
-        echo "</br>";
-        echo $id_direccion;
         echo "</br>";
         $query3 = "INSERT INTO usuario (id, nombre, rut, edad, sexo, contraseña) VALUES ('$id_usuario', '$nombre','$rut','$edad', '$sexo', '$contraseña');";
         $query4 = "INSERT INTO direcciones_e3 (id, nombre, comuna) VALUES ('$id_direccion','$direccion', '$comuna');";
