@@ -16,10 +16,10 @@
 <form align= "center" action="login.php" method="post">
 
 Rut:
-<input type="text" name= "rut">
+<<input type="text" name="rut" required pattern="^(\d{1,3}(?:\d{1,3}){2}-[\dkK])$" placeholder="11111111-1">
 <br/>
 Contraseña:
-<input type="text" name="rut" required pattern="^(\d{1,3}(?:\d{1,3}){2}-[\dkK])$" placeholder="11111111-1">
+<input type="password" name= "contraseña">
 <br/><br/>
 <p><input type="Submit" value="Ingresar"> 
 <button type="button" onclick="location.href = 'registro.php';"> Registrarse</button></p>
