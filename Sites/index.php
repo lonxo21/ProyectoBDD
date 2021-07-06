@@ -22,7 +22,6 @@ Contraseña:
 <input type="text" name= "contraseña">
 <br/><br/>
 <p><input type="Submit" value="Ingresar"> 
-<button type="reset" onclick="location.href = 'registro.php';"> Registrarse</button>
 <button type="button" onclick="location.href = 'registro.php';"> Registrarse</button></p>
 </form>
 
