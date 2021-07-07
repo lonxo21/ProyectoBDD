@@ -33,7 +33,6 @@
         $result -> execute();
         $resultado = $result -> fetch(1);
         $id_usuario = intval($resultado[0]) + 1;
-        echo $id_usuario;
         $query2 = "select id from direcciones_e3 order by id desc limit 1;";
         $result2 = $db2 -> prepare($query2);
         $result2 -> execute();
@@ -52,14 +51,16 @@
               $_SESSION['rut']=$rut;
               echo "<meta http-equiv='refresh' content='3; URL=show_usuario.php' />";
             } else {
-            $result = $db2 -> prepare("delete from direcciones_e3 where id='$id_direccion'");
-            $result -> execute();
-            echo "<p>No se pudo crear la cuenta(3)</p>";
+              $result = $db2 -> prepare("delete from direcciones_e3 where id='$id_direccion'");
+              $result -> execute();
+              $result = $db2 -> prepare("delete from usuario where id='$id_usuario'");
+              $result -> execute();
+              echo "<p>No se pudo crear la cuenta(3)</p>";
             }
           } else {
             $result = $db2 -> prepare("delete from usuario where id='$id_usuario'");
             $result -> execute();
-            echo "<p>No se pudo crear la cuent(2)</p>";
+            echo "<p>No se pudo crear la cuenta(2)</p>";
           }
         } else {
           echo "<p>No se pudo crear la cuenta(1)</p>";
