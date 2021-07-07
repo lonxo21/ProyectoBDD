@@ -19,7 +19,7 @@
       <option value='' selected disabled>...</option> 
       <option value="hombre">Hombre</option> 
       <option value="mujer">Mujer</option>
-      <option value="no_binarie">No binarie</option>  
+      <option value="no binarie">No binarie</option>  
     </select>
     <br/><br/>
     Dirección
