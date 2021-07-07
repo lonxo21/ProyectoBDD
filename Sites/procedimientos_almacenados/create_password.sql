@@ -1,13 +1,13 @@
 CREATE OR REPLACE FUNCTION
 
-create_password()
+create_password(contra varchar(15))
 
 RETURNS void AS $$
 
 
 BEGIN
 
-UPDATE usuario SET password = 'gen12345';
+UPDATE usuario SET contraseña = contra;
 
 
 END
