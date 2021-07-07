@@ -6,7 +6,7 @@ RETURNS integer AS $$
 
 BEGIN
 
-IF EXISTS (select producto.id from productos, stock, tienda where productos.id = stock.id_producto and tienda.id = sotck.id_tienda) THEN
+IF EXISTS (select productos.id from productos, stock, tienda where productos.id = stock.id_producto and tienda.id = sotck.id_tienda) THEN
     RETURN 1;
 
 ELSE
