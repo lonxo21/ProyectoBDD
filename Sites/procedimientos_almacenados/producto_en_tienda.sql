@@ -6,7 +6,7 @@ RETURNS integer AS $$
 
 BEGIN
 
-IF idproducto IN (select productos.id from productos, stock, tienda where productos.id = stock.id_producto and tienda.id = stock.id_tienda) THEN
+IF idproducto IN (select distinct productos.id from productos, stock, tienda where productos.id = stock.id_producto and tienda.id = stock.id_tienda and tienda.id = idtienda) THEN
     RETURN 1;
 
 ELSE
